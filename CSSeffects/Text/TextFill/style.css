@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.container{
+    padding: 0 1rem;
+    border: 2px solid #09a809;
+    /* background: #000; */
+}
+
+.container:hover{
+    box-shadow: 0 0 5px #09a809,
+                0 0 25px #09a809,
+                0 0 50px #09a809,
+                0 0 200px #09a809;
+    /* -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+    cursor: pointer; */
+}
+
+h1{
+    position: relative;
+    font-size: 8rem;
+    padding: 0 1rem;
+    color: transparent;
+    -webkit-text-stroke: 0.2rem #09a809;
+    background-image: linear-gradient(#09a809, #09a809);
+    background-repeat: no-repeat;
+    background-position: -35.5rem 0;
+    background-clip: text;
+    animation: animate 6s linear infinite;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+h1::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-right: 4px solid #09a809;
+    animation: borderAnimate 6s linear infinite;
+}
+
+
+
+@keyframes animate {
+    0%, 10%, 100%{
+        background-position: -35.5rem 0;
+    }
+    80%, 90%{
+        background-position: 0 0;
+    }
+}
+
+@keyframes borderAnimate {
+    0%, 10%, 100%{
+        width: 0%;
+    }
+    80%, 90%{
+        width: 100%;
+    }
+}

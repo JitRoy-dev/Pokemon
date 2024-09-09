@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    overflow: hidden;
+}
+
+.box{
+    position: relative;
+    width: 60rem;
+    height: 20rem;
+    /* border: 2px solid #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box:hover{
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+    cursor: pointer;
+}
+
+.box h1{
+    font-size: 10rem;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: 0.2rem;
+    text-shadow: 0 0 10px #f1842a,
+                 0 0 20px #f1842a,
+                 0 0 40px #f1842a,
+                 0 0 80px #f1842a;  
+}
+
+.lightBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    border-radius: 10px;
+    background: #fff;
+    z-index: 2;
+    box-shadow: 0 0 10px #f1842a,
+                 0 0 20px #f1842a,
+                 0 0 40px #f1842a,
+                 0 0 80px #f1842a;
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0%, 5%{
+        transform: scaleY(0) translateX(0);
+    }
+    10%{
+        transform: scaleY(1) translateX(0);
+    }
+    90%{
+        transform: scaleY(1) translateX(calc(60rem - 10px));
+    }
+    95%, 100%{
+        transform: scaleY(0) translate(calc(60rem - 10px));
+    }
+}
+
+.topLayer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    animation: layerAnimate 10s linear infinite;
+}
+
+@keyframes layerAnimate{
+    0%, 5%{
+        transform: translateX(0);
+    }
+    45%, 50%{
+        transform: translateX(100%);
+    }
+    50.001%, 55%{
+        transform: translateX(-100%);
+    }
+    95%, 100%{
+        transform: translateX(0);
+    }
+}

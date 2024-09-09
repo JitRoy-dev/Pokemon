@@ -1,0 +1,63 @@
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+:root{
+    --clr-1: #052b2f;
+    --clr-2: #011012;
+    --clr-3: #b0a61e;
+    --clr-4: #ab1e1e;
+    --clr-5: #597549;
+    --clr-6: #43adca;
+    --clr-7: #a5de4a;
+    --clr-8: #ca43a6;
+}
+
+body{
+    background-color: var(--clr-2);
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+.box{
+    height: 60vh;
+    aspect-ratio: 1 / 1.5;
+    background-image: url('https://images.pexels.com/photos/25451462/pexels-photo-25451462/free-photo-of-bell-tower-of-vilnius-cathedral.png');
+    background-size: cover;
+    border-radius: 0.5rem;
+    position: relative;
+    
+}
+
+.box::before,
+.box::after{
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--clr-3),
+        var(--clr-4),
+        var(--clr-5),
+        var(--clr-4),
+        var(--clr-6),
+        var(--clr-7),
+        var(--clr-8),
+        var(--clr-3)
+    );
+    border-radius: inherit;
+    animation: rotation 1s linear infinite;
+}
+.box::after{
+    filter: blur(2.5rem);
+    opacity: 0.5;
+}
+
+@keyframes rotation{
+    0% { --gradient-angle: 0deg}
+    100% { --gradient-angle: 360deg}
+} 
