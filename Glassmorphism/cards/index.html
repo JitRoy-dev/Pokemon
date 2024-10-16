@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <div class="card" data-tilt>
+        <div class="card">
             <div class="content">
                 <h2>01</h2>
                 <h3>Card One</h3>
@@ -19,7 +19,7 @@
                 <a href="#">Read More</a>
             </div>
         </div>
-        <div class="card" data-tilt>
+        <div class="card">
             <div class="content">
                 <h2>02</h2>
                 <h3>Card Two</h3>
@@ -28,7 +28,7 @@
                 <a href="#">Read More</a>
             </div>
         </div>
-        <div class="card" data-tilt>
+        <div class="card">
             <div class="content">
                 <h2>03</h2>
                 <h3>Card Three</h3>
@@ -41,10 +41,12 @@
 
 
     <script type="text/javascript" src="vanilla-tilt.js"></script>
-    <script type="text/javascript">
-        VanillaTilt.init(document.querySelectorAll(".card"), {
+    <script  type="text/javascript">
+        VanillaTilt.init(document.querySelectorAll(".card"),{
             max: 25,
-            speed: 400
+            speed: 400,
+            glare: true,
+            "max-glare": 0.5,
         });
     </script>
 </body>
