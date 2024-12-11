@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #2e7fbd;
+}
+.eyes{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+.eyes .eye{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5),
+                inset 0 0 15px #205179;
+    cursor: pointer;
+}
+.eyes .eye::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 35px;
+    width: 45px;
+    height: 45px;
+    transform: translate(-50%,-50%);
+    background: #205179;
+    border: 10px solid #2196f3;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.eyes .eye::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: 50%;
+    filter: blur(1px);
+}
