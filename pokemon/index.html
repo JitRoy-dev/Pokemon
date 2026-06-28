@@ -4,20 +4,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ultimate Pokedex Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <label for="name">Pokemon Name</label>
-        <input type="text" id="pokemonName" placeholder="pokemon">
+    <!-- Dynamic Ambient Background Glowing Blobs -->
+    <div class="blob blob-1" id="blob1"></div>
+    <div class="blob blob-2" id="blob2"></div>
 
-        <button id="btn" onclick="fetchData()">Submit</button>
-        <img src="" alt="Pokemon Sprite" id="pokemonSprite" style="display: none;">
+    <div class="app-container">
+        <!-- App Title Header -->
+        <header class="app-header">
+            <h1 class="logo"><i class="fa-solid fa-gamepad icon-pulse"></i> Pokédex <span>Portal</span></h1>
+            <p class="subtitle">Search your favorite Pokémon to dynamically themed layouts</p>
+        </header>
+
+        <!-- Modern Search & Action Bar -->
+        <div class="search-bar-container">
+            <div class="input-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="pokemonName" placeholder="Enter name or ID (e.g., Charizard or 6)" value="charizard" autocomplete="off">
+            </div>
+            <button id="btn" class="action-btn search-btn" onclick="fetchData()" title="Search Pokémon">
+                <span>Search</span> <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button id="randomBtn" class="action-btn random-btn" onclick="fetchRandom()" title="Random Pokémon">
+                <i class="fa-solid fa-dice-five"></i>
+            </button>
+        </div>
+
+        <!-- Error Dialog -->
+        <div id="errorBox" class="error-container" style="display: none;">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span id="errorMessage">Could not find Pokémon. Try another name!</span>
+        </div>
+
+        <!-- Main Pokémon Card Container -->
+        <main class="card-wrapper" id="pokedexContainer" style="display: none;">
+            <div class="card" id="pokemonCard">
+                <!-- Top Row: Name, Number & Shiny Toggle -->
+                <div class="card-top">
+                    <div class="pokemon-meta">
+                        <span class="pokedex-id" id="pokemonId">#0006</span>
+                        <h2 class="pokemon-display-name" id="pokemonDisplayName">Charizard</h2>
+                    </div>
+                    <button class="shiny-toggle" id="shinyToggle" onclick="toggleShiny()" title="Toggle Shiny Sprite">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Shiny</span>
+                    </button>
+                </div>
+
+                <!-- Main Art Display Box -->
+                <div class="card-visuals">
+                    <div class="artwork-circle-bg"></div>
+                    <img src="" alt="Pokemon Official Artwork" id="pokemonSprite" class="pokemon-artwork">
+                    <!-- Loading Spinner inside image block -->
+                    <div class="spinner" id="imageSpinner" style="display: none;"></div>
+                </div>
+
+                <!-- Types Pills Grid -->
+                <div class="types-container" id="typesContainer">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <!-- Quick Stats Info Pills -->
+                <div class="quick-info-grid">
+                    <div class="info-pill">
+                        <span class="info-label"><i class="fa-solid fa-arrows-up-down"></i> Height</span>
+                        <span class="info-val" id="valHeight">1.7 m</span>
+                    </div>
+                    <div class="info-pill">
+                        <span class="info-label"><i class="fa-solid fa-weight-hanging"></i> Weight</span>
+                        <span class="info-val" id="valWeight">90.5 kg</span>
+                    </div>
+                    <div class="info-pill">
+                        <span class="info-label"><i class="fa-solid fa-bolt"></i> Abilities</span>
+                        <span class="info-val" id="valAbilities" title="Blaze, Solar-Power">Blaze</span>
+                    </div>
+                </div>
+
+                <!-- Section: Audio Sound Cry -->
+                <div class="audio-control-bar" id="cryContainer">
+                    <button id="cryBtn" class="cry-button" onclick="playCry()" title="Listen to Pokemon Cry">
+                        <span class="cry-pulse-ring"></span>
+                        <i class="fa-solid fa-volume-high"></i>
+                        <span>Play Pokémon Cry</span>
+                    </button>
+                    <!-- Audio element -->
+                    <audio id="pokemonAudioCtrl"></audio>
+                </div>
+
+                <!-- Section: Stats Bars -->
+                <div class="stats-section">
+                    <h3 class="section-title">Base Stats</h3>
+                    <div class="stats-grid" id="statsGrid">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Skeleton Loader / Startup Screen -->
+        <div id="statusMessage" class="loading-state">
+            <div class="pokeball-loading">
+                <div class="pokeball-top"></div>
+                <div class="pokeball-middle"></div>
+                <div class="pokeball-bottom"></div>
+            </div>
+            <p id="statusText">Search a Pokémon name or click Random to begin!</p>
+        </div>
     </div>
 
-
+    <!-- Script File -->
     <script src="script.js"></script>
 </body>
 
